@@ -1,0 +1,8 @@
+opencv-python
+pywinauto
+scipy
+Pillow
+pandas
+mouse
+pynput
+pyinstaller
