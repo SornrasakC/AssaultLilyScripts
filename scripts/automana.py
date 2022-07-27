@@ -144,6 +144,7 @@ def main():
 
     global set_pos
     global paired_iter
+    global center_pos
 
     set_pos = list(zip(out_pos, in_pos))
     paired_iter = pair_iter(set_pos)
@@ -154,7 +155,7 @@ def main():
         wndw = app.window()
         rect = wndw.rectangle()
         set_pos = list(zip(scale(out_pos, rect), scale(in_pos, rect)))
-        [center_pos] = scale([center_pos])
+        [center_pos] = scale([center_pos], rect)
         # print(scale(out_pos, rect))
         # print(scale(in_pos, rect))
         paired_iter = pair_iter(set_pos)
