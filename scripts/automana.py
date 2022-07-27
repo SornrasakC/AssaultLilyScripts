@@ -48,7 +48,7 @@ def on_press(key):
         k = key.name  # other keys
     if k == ']':
         exit()
-    if k not in ['`', 'f2']:
+    if k not in ['`', 'f2', 'f4']:
         return None
 
     if len(input_queues) < 2:
