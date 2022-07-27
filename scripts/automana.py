@@ -75,14 +75,15 @@ def scale(positions, rect):
     r, l = rect.right - 8, rect.left + 8
     b, t = rect.bottom - 8, rect.top + 8
 
-    W, H = 1936 - 16, 1056 - 16
+    # W, H = 1936 - 16, 1056 - 16
+    W, H = 2560, 1400
     w, h = abs(r - l), abs(b - t)
     return [(int(x * w / W) + l, int(y * h / H) + t) for x, y in positions]
 
 '''
 1080p
 '''
-raw_pos = [(695, 745), (493, 515), (753, 398), (1045, 368), (1318, 440), (1438, 607), (1429, 614), (1261, 781), (929, 860)] #last is bottom, left to right is clock wise
+# raw_pos = [(695, 745), (493, 515), (753, 398), (1045, 368), (1318, 440), (1438, 607), (1429, 614), (1261, 781), (929, 860)] #last is bottom, left to right is clock wise
 # out_pos = [(953, 882), (533, 767), (458, 529), (717, 346), (1073, 325), (1340, 425), (1479, 600), (1334, 826)] #first is bottom
 # in_pos = [(943, 774), (645, 676), (537, 517), (749, 418), (1015, 382), (1280, 454), (1378, 609), (1245, 735)]
 
@@ -138,8 +139,8 @@ def main():
     #     repeats = 1
     # auto_scale = (input("Auto scale? (for screen less than 1080p or doesn't play on windowed maximize) \n(y/n) [n]: ") or 'n') == 'y'
     repeats = 1
-    auto_scale = False
-    print('2k version locked')
+    auto_scale = True
+    # print('2k version locked')
 
     global set_pos
     global paired_iter
@@ -153,8 +154,9 @@ def main():
         wndw = app.window()
         rect = wndw.rectangle()
         set_pos = list(zip(scale(out_pos, rect), scale(in_pos, rect)))
-        print(scale(out_pos, rect))
-        print(scale(in_pos, rect))
+        [center_pos] = scale([center_pos])
+        # print(scale(out_pos, rect))
+        # print(scale(in_pos, rect))
         paired_iter = pair_iter(set_pos)
 
     start_keyboard()
